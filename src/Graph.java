@@ -52,7 +52,10 @@ public class Graph<E> {
     public String breadthFirstTraversal(String root){
         return "";
     }
-    public String depthFirstTraversal(E origin){
+    public QueueInterface<E> depthFirstTraversal(E origin){
+        QueueInterface<E> traversalOrder = new LinkedQueue<E>();
+        StackInterface<E> vertextStack = new LinkedStack<>();
+
         return "";
     }
 
