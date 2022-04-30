@@ -49,14 +49,28 @@ public class Graph<E> {
         return labels.length;
     }
 
+
     public String breadthFirstTraversal(String root){
         return "";
     }
     public QueueInterface<E> depthFirstTraversal(E origin){
         QueueInterface<E> traversalOrder = new LinkedQueue<E>();
-        StackInterface<E> vertextStack = new LinkedStack<>();
+        StackInterface<Integer> vertexStack = new LinkedStack<>();
 
-        return "";
+        traversalOrder.enqueue(origin);
+        vertexStack.push(1);
+
+        while(!vertexStack.isEmpty()){
+            int topVertex = vertexStack.peek();
+            int[] neighbors = neighbors(topVertex);
+            int nextNeighbor =
+
+
+
+            vertexStack.pop();
+
+        }
+        return traversalOrder;
     }
 
 }
