@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -58,17 +60,28 @@ public class Graph<E> {
         StackInterface<Integer> vertexStack = new LinkedStack<>();
 
         traversalOrder.enqueue(origin);
-        vertexStack.push(1);
+        vertexStack.push(Arrays.binarySearch(labels, origin));
+
+        ArrayList isVisited = new ArrayList(labels.length);
 
         while(!vertexStack.isEmpty()){
             int topVertex = vertexStack.peek();
             int[] neighbors = neighbors(topVertex);
-            int nextNeighbor =
+            int nextNeighbor = -1;
+            for (int g : neighbors){
+                if(!isVisited.contains(g)){
+                    nextNeighbor = g;
+                    break;
+                }
+            }
 
-
-
-            vertexStack.pop();
-
+            if(nextNeighbor != -1){
+                isVisited.add(nextNeighbor);
+                traversalOrder.enqueue(getLabel(nextNeighbor));
+                vertexStack.push(nextNeighbor);
+            } else {
+                vertexStack.pop();
+            }
         }
         return traversalOrder;
     }
