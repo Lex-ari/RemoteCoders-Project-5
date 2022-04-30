@@ -46,8 +46,11 @@ public class Graph<E> {
         return labels.length;
     }
 
-
-
-
+    public String breadthFirstTraversal(String root){
+        return "";
+    }
+    public String depthFirstTraversal(String root){
+        return "";
+    }
 
 }
