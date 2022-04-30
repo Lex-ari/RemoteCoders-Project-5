@@ -1,2 +1,2 @@
-public class LinkedStack {
+public class LinkedStack{
 }
