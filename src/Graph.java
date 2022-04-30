@@ -1,3 +1,6 @@
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
+
 public class Graph<E> {
     private boolean[][] edges;
     private E[] labels;
@@ -49,7 +52,7 @@ public class Graph<E> {
     public String breadthFirstTraversal(String root){
         return "";
     }
-    public String depthFirstTraversal(String root){
+    public String depthFirstTraversal(E origin){
         return "";
     }
 
