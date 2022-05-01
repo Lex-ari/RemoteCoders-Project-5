@@ -52,8 +52,12 @@ public class Graph<E> {
     }
 
 
-    public String breadthFirstTraversal(String root){
-        return "";
+    public QueueInterface<E> breadthFirstTraversal(E root){
+        QueueInterface<E> breadthFirstTraversal = new LinkedQueue<E>();
+
+
+
+        return breadthFirstTraversal;
     }
     public QueueInterface<E> depthFirstTraversal(E origin){
         QueueInterface<E> traversalOrder = new LinkedQueue<E>();
