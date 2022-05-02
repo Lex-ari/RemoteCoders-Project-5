@@ -53,11 +53,18 @@ public class Graph<E> {
 
 
     public QueueInterface<E> breadthFirstTraversal(E root){
-        QueueInterface<E> breadthFirstTraversal = new LinkedQueue<E>();
+        QueueInterface<E> traversal = new LinkedQueue<E>();
+        QueueInterface<E> order = new LinkedQueue<E>();
+        
+        order.enqueue(root);
+        traversal.enqueue(root);
+        while(!traversal.isEmpty()){
+            E node = traversal.getFront();
+            
+        }
+        
 
-
-
-        return breadthFirstTraversal;
+        return order;
     }
     public QueueInterface<E> depthFirstTraversal(E origin){
         QueueInterface<E> traversalOrder = new LinkedQueue<E>();
