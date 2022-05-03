@@ -71,27 +71,35 @@ public class Graph<E> {
         StackInterface<Integer> vertexStack = new LinkedStack<>();
 
         traversalOrder.enqueue(origin);
-        vertexStack.push(Arrays.binarySearch(labels, origin));
+        int originIndex = -1;
+        for (int i = 0; i < labels.length; i++){
+            if (origin.equals(labels[i])){
+                originIndex = i;
+                break;
+            }
+        }
+        vertexStack.push(originIndex);
 
         ArrayList isVisited = new ArrayList(labels.length);
-
-        while(!vertexStack.isEmpty()){
-            int topVertex = vertexStack.peek();
-            int[] neighbors = neighbors(topVertex);
-            int nextNeighbor = -1;
-            for (int g : neighbors){
-                if(!isVisited.contains(g)){
-                    nextNeighbor = g;
-                    break;
+        if (originIndex >= 0) {
+            while (!vertexStack.isEmpty()) {
+                int topVertex = vertexStack.peek();
+                int[] neighbors = neighbors(topVertex);
+                int nextNeighbor = -1;
+                for (int g : neighbors) {
+                    if (!isVisited.contains(g)) {
+                        nextNeighbor = g;
+                        break;
+                    }
                 }
-            }
 
-            if(nextNeighbor != -1){
-                isVisited.add(nextNeighbor);
-                traversalOrder.enqueue(getLabel(nextNeighbor));
-                vertexStack.push(nextNeighbor);
-            } else {
-                vertexStack.pop();
+                if (nextNeighbor != -1) {
+                    isVisited.add(nextNeighbor);
+                    traversalOrder.enqueue(getLabel(nextNeighbor));
+                    vertexStack.push(nextNeighbor);
+                } else {
+                    vertexStack.pop();
+                }
             }
         }
         return traversalOrder;
