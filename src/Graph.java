@@ -52,18 +52,39 @@ public class Graph<E> {
     }
 
 
-    public QueueInterface<E> breadthFirstTraversal(E root){
-        QueueInterface<E> traversal = new LinkedQueue<E>();
-        QueueInterface<E> order = new LinkedQueue<E>();
-        
+    public QueueInterface<Integer> breadthFirstTraversal(int root){
+        QueueInterface<Integer> traversal = new LinkedQueue<Integer>();
+        QueueInterface<Integer> order = new LinkedQueue<Integer>();
+        int[] usedValues = new int[this.size()];
+        int temp = 0;
+        boolean duplicate = false;
         order.enqueue(root);
         traversal.enqueue(root);
         while(!traversal.isEmpty()){
-            E node = traversal.getFront();
+            int node = traversal.getFront();
+            traversal.dequeue();
+            int[] neighbors = this.neighbors(node);
+            for(int i = 0; i < neighbors.length; i++){
+                for(int j = 0; j < neighbors.length; j++){
+                    temp = neighbors[i];
+                    if(neighbors[j] < temp){
+                        temp = neighbors[j];
+                    }
+                }
+                for(int k = 0; k < usedValues.length; k++){
+                    if(neighbors[temp] == usedValues[k]){
+                        duplicate = true;
+                    }
+                }
+                if(!duplicate){
+                    order.enqueue(temp);
+                    traversal.enqueue(temp);
+
+                    neighbors[temp] = Integer.MAX_VALUE;
+                }
+            }
             
         }
-        
-
         return order;
     }
     public QueueInterface<E> depthFirstTraversal(E origin){
