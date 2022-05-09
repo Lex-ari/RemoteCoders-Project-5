@@ -15,6 +15,16 @@ public class Graph<E> {
     public E getLabel(int vertex) {
         return labels[vertex];
     }
+    public int getVertex(E label){
+        int vertex = 0;
+        for(int i = 0; i < labels.length; i++){
+            if(labels[i].equals(label)){
+                vertex = i;
+                break;
+            }
+        }
+        return vertex;
+    }
 
     public boolean isEdge(int source, int target) {
         return edges[source][target];
@@ -52,14 +62,14 @@ public class Graph<E> {
     }
 
 
-    public QueueInterface<Integer> breadthFirstTraversal(int root){
+    public QueueInterface<Integer> breadthFirstTraversal(E origin){
         QueueInterface<Integer> traversal = new LinkedQueue<Integer>();
         QueueInterface<Integer> order = new LinkedQueue<Integer>();
         int[] usedValues = new int[this.size()];
         int temp = 0;
         boolean duplicate = false;
-        order.enqueue(root);
-        traversal.enqueue(root);
+        order.enqueue(this.getVertex(origin));
+        traversal.enqueue(this.getVertex(origin));
         while(!traversal.isEmpty()){
             int node = traversal.getFront();
             traversal.dequeue();
