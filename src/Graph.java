@@ -16,7 +16,7 @@ public class Graph<E> {
         return labels[vertex];
     }
     public int getVertex(E label){
-        int vertex = 0;
+        int vertex = -1;
         for(int i = 0; i < labels.length; i++){
             if(labels[i].equals(label)){
                 vertex = i;
@@ -102,13 +102,7 @@ public class Graph<E> {
         StackInterface<Integer> vertexStack = new LinkedStack<>();
 
         traversalOrder.enqueue(origin);
-        int originIndex = -1;
-        for (int i = 0; i < labels.length; i++){
-            if (origin.equals(labels[i])){
-                originIndex = i;
-                break;
-            }
-        }
+        int originIndex = getVertex(origin);
         vertexStack.push(originIndex);
 
         ArrayList isVisited = new ArrayList(labels.length);
