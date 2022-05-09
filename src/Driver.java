@@ -27,5 +27,15 @@ public class Driver {
         graph.addEdge(7, 8);
         graph.addEdge(8, 5);
 
+        QueueInterface<Character> breadthFirstTraversal = graph.breadthFirstTraversal('A');
+        while (!breadthFirstTraversal.isEmpty()){
+            System.out.print(breadthFirstTraversal.dequeue());
+        }
+        System.out.println();
+        QueueInterface<Character> depthFirstTraversal = graph.depthFirstTraversal('A');
+        while (!depthFirstTraversal.isEmpty()){
+            System.out.print(depthFirstTraversal.dequeue());
+        }
+        System.out.println();
     }
 }
