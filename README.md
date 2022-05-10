@@ -7,7 +7,7 @@ To run code: Run main function on Driver.java.
 
 Contributions
 
-Koki Yamaguchi: 
+Koki Yamaguchi: Implementation of Graph and graph interface and Junit test.
 
 Iker Goni: 
 
