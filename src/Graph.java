@@ -65,11 +65,13 @@ public class Graph<E> {
     public QueueInterface<Integer> breadthFirstTraversal(E origin){
         QueueInterface<Integer> traversal = new LinkedQueue<Integer>();
         QueueInterface<Integer> order = new LinkedQueue<Integer>();
-        int[] usedValues = new int[this.size()];
+        boolean[] usedValues = new boolean[this.size()];
         int temp = 0;
         boolean duplicate = false;
         order.enqueue(this.getVertex(origin));
         traversal.enqueue(this.getVertex(origin));
+        usedValues[this.getVertex(origin)] = true;
+        
         while(!traversal.isEmpty()){
             int node = traversal.getFront();
             traversal.dequeue();
@@ -81,16 +83,10 @@ public class Graph<E> {
                         temp = neighbors[j];
                     }
                 }
-                for(int k = 0; k < usedValues.length; k++){
-                    if(neighbors[temp] == usedValues[k]){
-                        duplicate = true;
-                    }
-                }
-                if(!duplicate){
+                if(!usedValues[temp]){
                     order.enqueue(temp);
                     traversal.enqueue(temp);
-
-                    neighbors[temp] = Integer.MAX_VALUE;
+                    usedValues[temp] = true;
                 }
             }
 
