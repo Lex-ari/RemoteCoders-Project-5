@@ -151,7 +151,9 @@ public class Graph<E> implements BasicGraphInterface<E>{
                 int nextNeighbor = -1;
                 for (int g : neighbors) {
                     if (!isVisited.contains(g)) {
-                        nextNeighbor = g;
+                        if (g < nextNeighbor || nextNeighbor == -1){
+                            nextNeighbor = g;
+                        }
                         break;
                     }
                 }
