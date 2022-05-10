@@ -3,19 +3,12 @@ import java.util.ArrayList;
 public class Graph<E> implements BasicGraphInterface<E>{
     private boolean[][] edges;
     private E[] labels;
-    private static final int DEFAULT_SIZE = 10;
-    private boolean integrityOK = false;
-
-    public Graph() {
-        edges = new boolean[DEFAULT_SIZE][DEFAULT_SIZE];
-        labels = (E[]) new Object[DEFAULT_SIZE];
-    }
 
     public Graph(int n) {
         edges = new boolean[n][n];
         labels = (E[]) new Object[n];
-        integrityOK = true;
     }
+
 
     public E getLabel(int vertex) {
         return labels[vertex];
@@ -33,8 +26,8 @@ public class Graph<E> implements BasicGraphInterface<E>{
 
     @Override
     public boolean addVertex(E label){
-        final E[] copiedLabels = (E[]) new Object[labels.length * 2];
-        final boolean[][] copiedEdges = new boolean[edges.length * 2][edges.length * 2];
+        final E[] copiedLabels = (E[]) new Object[labels.length + 1];
+        final boolean[][] copiedEdges = new boolean[edges.length+1][edges.length+1];
         System.arraycopy(labels, 0, copiedLabels, 0, labels.length);
         copiedLabels[labels.length] = label;
         labels = copiedLabels;
@@ -45,7 +38,6 @@ public class Graph<E> implements BasicGraphInterface<E>{
             }
         }
         edges = copiedEdges;
-        integrityOK = true;
         return true;
     }
     @Override
@@ -65,12 +57,6 @@ public class Graph<E> implements BasicGraphInterface<E>{
         int targetIndex = this.getVertex(target);
         edges[sourceIndex][targetIndex] = true;
         return true;
-    }
-
-    private void checkIntegrity(){
-        if (!integrityOK){
-            throw new SecurityException("Graph object is corrupt.");
-        }
     }
 
     public int[] neighbors(int vertex) {
@@ -127,7 +113,7 @@ public class Graph<E> implements BasicGraphInterface<E>{
         order.enqueue(origin);
         traversal.enqueue(this.getVertex(origin));
         usedValues[this.getVertex(origin)] = true;
-        
+
         while(!traversal.isEmpty()){
             int node = traversal.getFront();
             traversal.dequeue();
