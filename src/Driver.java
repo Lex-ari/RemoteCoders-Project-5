@@ -7,7 +7,7 @@ public class Driver {
 
         runJUnitTests();
 
-        BasicGraphInterface<Character> arrayGraph = new Graph();
+        BasicGraphInterface<Character> arrayGraph = new Graph(9);
         arrayGraph.addVertex('A');
         arrayGraph.addVertex('B');
         arrayGraph.addVertex('C');
@@ -32,7 +32,7 @@ public class Driver {
         arrayGraph.addEdge('I','F');
 
 
-        BasicGraphInterface<Character> adjacencyListGraph = new AdjacencyListGraph<>();
+        BasicGraphInterface<Character> adjacencyListGraph = new AdjacencyListGraph<>(9);
         adjacencyListGraph.addVertex('A');
         adjacencyListGraph.addVertex('B');
         adjacencyListGraph.addVertex('C');

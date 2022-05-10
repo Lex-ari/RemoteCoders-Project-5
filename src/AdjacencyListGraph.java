@@ -5,7 +5,7 @@ public class AdjacencyListGraph<E> implements BasicGraphInterface<E>{
     private LinkedList<LinkedList<E>> adjacencyList;
     private LinkedList<E>labels;
 
-    public AdjacencyListGraph(){
+    public AdjacencyListGraph(int i){
         adjacencyList = new LinkedList();
         labels = new LinkedList();
     }

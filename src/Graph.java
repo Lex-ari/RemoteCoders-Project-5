@@ -4,11 +4,11 @@ public class Graph<E> implements BasicGraphInterface<E>{
     private boolean[][] edges;
     private E[] labels;
 
-    public Graph() {
+    public Graph(int n) {
         edges = new boolean[n][n];
         labels = (E[]) new Object[n];
     }
-    
+
 
     public E getLabel(int vertex) {
         return labels[vertex];
@@ -113,7 +113,7 @@ public class Graph<E> implements BasicGraphInterface<E>{
         order.enqueue(origin);
         traversal.enqueue(this.getVertex(origin));
         usedValues[this.getVertex(origin)] = true;
-        
+
         while(!traversal.isEmpty()){
             int node = traversal.getFront();
             traversal.dequeue();
