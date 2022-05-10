@@ -9,7 +9,7 @@ Contributions
 
 Koki Yamaguchi: Implementation of Graph and graph interface and Junit test.
 
-Iker Goni: BFS, Matrix bugfixing and converting to generic types.
+Iker Goni: BFS, Linkled Queue and Linked Stack Implementation, Matrix bugfixing and converting to generic types.
 
 Alex Mariano: DFS, AdjacencyList Implementation, Debugging
 
