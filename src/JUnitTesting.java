@@ -1,12 +1,12 @@
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class JunitTesting {
+public class JUnitTesting {
     /*
      *  initialized
      */
@@ -193,8 +193,8 @@ public class JunitTesting {
         adjacencyListGraph.addEdge('G','H');
         adjacencyListGraph.addEdge('H','I');
         adjacencyListGraph.addEdge('I','F');
-       assertEquals("ABDEGFHCI", ((Graph<Character>) arrayGraph).depthFirstTraversal('A'));
-       assertEquals("ABDEGFHCI", (((AdjacencyListGraph<Character>) adjacencyListGraph).breadthFirstTraversal('A')));
+       assertEquals("ABDEGFHCI", queueToString(((Graph<Character>) arrayGraph).breadthFirstTraversal('A')));
+       assertEquals("ABDEGFHCI", queueToString((((AdjacencyListGraph<Character>) adjacencyListGraph).breadthFirstTraversal('A'))));
 
 
 
@@ -249,9 +249,17 @@ public class JunitTesting {
         adjacencyListGraph.addEdge('G','H');
         adjacencyListGraph.addEdge('H','I');
         adjacencyListGraph.addEdge('I','F');
-        assertEquals("ABEFCHIDG", ((Graph<Character>) arrayGraph).depthFirstTraversal('A'));
-        assertEquals("ABEFCHIDG", ((AdjacencyListGraph<Character>) adjacencyListGraph).depthFirstTraversal('A'));
+        assertEquals("ABEFCHIDG", queueToString(((Graph<Character>) arrayGraph).depthFirstTraversal('A')));
+        assertEquals("ABEFCHIDG", queueToString(((AdjacencyListGraph<Character>) adjacencyListGraph).depthFirstTraversal('A')));
     }
+    public static String queueToString(QueueInterface<Character> queue){
+        String returnString = "";
+        while (!queue.isEmpty()){
+            returnString += queue.dequeue();
+        }
+        return returnString;
+    }
+
 }
 
 

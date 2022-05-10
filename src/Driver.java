@@ -5,7 +5,7 @@ import org.junit.runner.Result;
 public class Driver {
     public static void main(String[] args){
 
-        //runJUnitTests();
+        runJUnitTests();
 
         BasicGraphInterface<Character> arrayGraph = new Graph(9);
         arrayGraph.addVertex('A');
@@ -77,11 +77,11 @@ public class Driver {
         System.out.println();
     }
 
-    /*public static void runJUnitTests(){
-        Result result = JUnitCore.runClasses(JunitTesting.class);
+    public static void runJUnitTests(){
+        Result result = JUnitCore.runClasses(JUnitTesting.class);
         for (Failure failure : result.getFailures()){
             System.out.println(failure.toString());
         }
         System.out.println("JUnit Tests: Binary Tree test cases were successful? = " + result.wasSuccessful());
-    }*/
+    }
 }
