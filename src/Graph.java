@@ -105,7 +105,7 @@ public class Graph<E> implements BasicGraphInterface<E>{
     }
 
     /**
-     * breadthFirstTraversal. Traverses through a graph as a BFS.
+     * breadthFirstTraversal. Traverses through a graph by calling all neighbors and then traversing from each said neighbor.
      * @param origin, origin node
      * @return a Queue of the nodes visited.
      */
@@ -142,7 +142,7 @@ public class Graph<E> implements BasicGraphInterface<E>{
     }
 
     /**
-     * depthFirstTraversal. Traverses through a graph as a DFS.
+     * depthFirstTraversal. Traverses through a graph by traversing the first neighbor of each node, and then reversing and iterating through unreached neighbors.
      * @param origin, origin node
      * @return a Queue of the nodes visited.
      */
