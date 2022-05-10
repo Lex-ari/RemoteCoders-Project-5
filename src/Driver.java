@@ -24,15 +24,41 @@ public class Driver {
         graph.addEdge(4, 7);
         graph.addEdge(5, 7);
         graph.addEdge(5, 2);
+        graph.addEdge(6, 7);
         graph.addEdge(7, 8);
         graph.addEdge(8, 5);
+
+
+        BasicGraphInterface<Character> adjacencyListGraph = new AdjacencyListGraph<>(9);
+        adjacencyListGraph.addVertex('A');
+        adjacencyListGraph.addVertex('B');
+        adjacencyListGraph.addVertex('C');
+        adjacencyListGraph.addVertex('D');
+        adjacencyListGraph.addVertex('E');
+        adjacencyListGraph.addVertex('F');
+        adjacencyListGraph.addVertex('G');
+        adjacencyListGraph.addVertex('H');
+        adjacencyListGraph.addVertex('I');
+        adjacencyListGraph.addEdge('A','B');
+        adjacencyListGraph.addEdge('A','D');
+        adjacencyListGraph.addEdge('A','E');
+        adjacencyListGraph.addEdge('B','E');
+        adjacencyListGraph.addEdge('C','B');
+        adjacencyListGraph.addEdge('D','G');
+        adjacencyListGraph.addEdge('E','F');
+        adjacencyListGraph.addEdge('E','H');
+        adjacencyListGraph.addEdge('F','C');
+        adjacencyListGraph.addEdge('F','H');
+        adjacencyListGraph.addEdge('G','H');
+        adjacencyListGraph.addEdge('H','I');
+        adjacencyListGraph.addEdge('I','F');
 
         QueueInterface<Character> breadthFirstTraversal = graph.breadthFirstTraversal('A');
         while (!breadthFirstTraversal.isEmpty()){
             System.out.print(breadthFirstTraversal.dequeue());
         }
         System.out.println();
-        QueueInterface<Character> depthFirstTraversal = graph.depthFirstTraversal('A');
+        QueueInterface<Character> depthFirstTraversal = ((AdjacencyListGraph<Character>) adjacencyListGraph).depthFirstTraversal('A');
         while (!depthFirstTraversal.isEmpty()){
             System.out.print(depthFirstTraversal.dequeue());
         }
