@@ -50,6 +50,37 @@ public class AdjacencyListGraph<E> implements BasicGraphInterface<E>{
         labels.clear();
     }
 
+    public QueueInterface<E> breadthFirstTraversal(E origin){
+        QueueInterface<E> traversal = new LinkedQueue<E>();
+        QueueInterface<E> order = new LinkedQueue<E>();
+        LinkedList<E> usedValues = new LinkedList<>();
+        E temp = null;
+        boolean duplicate = false;
+        order.enqueue(origin);
+        traversal.enqueue(origin);
+        usedValues.add(origin);
+
+        while(!traversal.isEmpty()){
+            E node = traversal.getFront();
+            traversal.dequeue();
+            LinkedList<E> neighbors = adjacencyList.get(labels.indexOf(node));
+            for(int i = 0; i < neighbors.size(); i++){
+                for(int j = 0; j < neighbors.size(); j++){
+                    temp = neighbors.get(i);
+                    if(neighbors.get(j).toString().compareTo(temp.toString()) < 0){
+                        temp = neighbors.get(j);
+                    }
+                }
+                if(usedValues.indexOf(temp) == -1){
+                    order.enqueue(temp);
+                    traversal.enqueue(temp);
+                    usedValues.add(temp);
+                }
+            }
+
+        }
+        return order;
+    }
     public QueueInterface<E> depthFirstTraversal(E origin){
         QueueInterface<E> traversalOrder = new LinkedQueue<E>();
         StackInterface<E> vertexStack = new LinkedStack<E>();

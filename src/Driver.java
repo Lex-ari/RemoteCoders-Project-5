@@ -53,7 +53,7 @@ public class Driver {
         adjacencyListGraph.addEdge('H','I');
         adjacencyListGraph.addEdge('I','F');
 
-        QueueInterface<Character> breadthFirstTraversal = graph.breadthFirstTraversal('A');
+        QueueInterface<Character> breadthFirstTraversal = ((AdjacencyListGraph<Character>) adjacencyListGraph).breadthFirstTraversal('A');
         while (!breadthFirstTraversal.isEmpty()){
             System.out.print(breadthFirstTraversal.dequeue());
         }
