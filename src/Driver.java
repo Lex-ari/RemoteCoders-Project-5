@@ -1,9 +1,13 @@
+import org.junit.runner.JUnitCore;
+import org.junit.runner.notification.Failure;
+import org.junit.runner.Result;
+
 public class Driver {
     public static void main(String[] args){
 
-        // Let A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7, I = 8
+        runJUnitTests();
 
-        BasicGraphInterface<Character> arrayGraph = new Graph(9);
+        BasicGraphInterface<Character> arrayGraph = new Graph();
         arrayGraph.addVertex('A');
         arrayGraph.addVertex('B');
         arrayGraph.addVertex('C');
@@ -28,7 +32,7 @@ public class Driver {
         arrayGraph.addEdge('I','F');
 
 
-        BasicGraphInterface<Character> adjacencyListGraph = new AdjacencyListGraph<>(9);
+        BasicGraphInterface<Character> adjacencyListGraph = new AdjacencyListGraph<>();
         adjacencyListGraph.addVertex('A');
         adjacencyListGraph.addVertex('B');
         adjacencyListGraph.addVertex('C');
@@ -71,5 +75,13 @@ public class Driver {
             System.out.print(queue.dequeue());
         }
         System.out.println();
+    }
+
+    public static void runJUnitTests(){
+        Result result = JUnitCore.runClasses(JunitTesting.class);
+        for (Failure failure : result.getFailures()){
+            System.out.println(failure.toString());
+        }
+        System.out.println("JUnit Tests: Binary Tree test cases were successful? = " + result.wasSuccessful());
     }
 }
