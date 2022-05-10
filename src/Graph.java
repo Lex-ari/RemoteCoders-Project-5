@@ -1,9 +1,6 @@
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingQueue;
 
-public class Graph<E> implements BasicGraphInterface{
+public class Graph<E> implements BasicGraphInterface<E>{
     private boolean[][] edges;
     private E[] labels;
 
@@ -11,6 +8,7 @@ public class Graph<E> implements BasicGraphInterface{
         edges = new boolean[n][n];
         labels = (E[]) new Object[n];
     }
+    
 
     public E getLabel(int vertex) {
         return labels[vertex];
@@ -53,10 +51,11 @@ public class Graph<E> implements BasicGraphInterface{
     }
 
     @Override
-    public void addEdge(E source, E target) {
+    public boolean addEdge(E source, E target) {
         int sourceIndex = this.getVertex(source);
         int targetIndex = this.getVertex(target);
         edges[sourceIndex][targetIndex] = true;
+        return true;
     }
 
     public int[] neighbors(int vertex) {
@@ -104,12 +103,10 @@ public class Graph<E> implements BasicGraphInterface{
         return true;
     }
 
-
-
     public QueueInterface<Integer> breadthFirstTraversal(E origin){
         QueueInterface<Integer> traversal = new LinkedQueue<Integer>();
         QueueInterface<Integer> order = new LinkedQueue<Integer>();
-        boolean[] usedValues = new boolean[this.size()];
+        boolean[] usedValues = new boolean[labels.length];
         int temp = 0;
         boolean duplicate = false;
         order.enqueue(this.getVertex(origin));
