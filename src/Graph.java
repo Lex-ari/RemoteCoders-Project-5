@@ -16,7 +16,7 @@ public class Graph<E> implements BasicGraphInterface<E>{
     public int getVertex(E label){
         int vertex = -1;
         for(int i = 0; i < labels.length; i++){
-            if(labels[i].equals(label)){
+            if(labels[i] != null && labels[i].equals(label)){
                 vertex = i;
                 break;
             }
@@ -29,7 +29,7 @@ public class Graph<E> implements BasicGraphInterface<E>{
         final E[] copiedLabels = (E[]) new Object[labels.length + 1];
         final boolean[][] copiedEdges = new boolean[edges.length+1][edges.length+1];
         System.arraycopy(labels, 0, copiedLabels, 0, labels.length);
-        copiedLabels[labels.length + 1] = label;
+        copiedLabels[labels.length] = label;
         labels = copiedLabels;
 
         for(int i = 0; i < edges.length; i++){
@@ -37,6 +37,7 @@ public class Graph<E> implements BasicGraphInterface<E>{
                 copiedEdges[i][j] = edges[i][j];
             }
         }
+        edges = copiedEdges;
         return true;
     }
     @Override
@@ -103,13 +104,13 @@ public class Graph<E> implements BasicGraphInterface<E>{
         return true;
     }
 
-    public QueueInterface<Integer> breadthFirstTraversal(E origin){
+    public QueueInterface<E> breadthFirstTraversal(E origin){
         QueueInterface<Integer> traversal = new LinkedQueue<Integer>();
-        QueueInterface<Integer> order = new LinkedQueue<Integer>();
+        QueueInterface<E> order = new LinkedQueue<E>();
         boolean[] usedValues = new boolean[labels.length];
         int temp = 0;
         boolean duplicate = false;
-        order.enqueue(this.getVertex(origin));
+        order.enqueue(origin);
         traversal.enqueue(this.getVertex(origin));
         usedValues[this.getVertex(origin)] = true;
         
@@ -125,7 +126,7 @@ public class Graph<E> implements BasicGraphInterface<E>{
                     }
                 }
                 if(!usedValues[temp]){
-                    order.enqueue(temp);
+                    order.enqueue(getLabel(temp));
                     traversal.enqueue(temp);
                     usedValues[temp] = true;
                 }

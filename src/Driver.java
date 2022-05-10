@@ -3,30 +3,29 @@ public class Driver {
 
         // Let A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7, I = 8
 
-        Graph graph = new Graph(9);
-        graph.setLabel(0,'A');
-        graph.setLabel(1,'B');
-        graph.setLabel(2,'C');
-        graph.setLabel(3,'D');
-        graph.setLabel(4,'E');
-        graph.setLabel(5,'F');
-        graph.setLabel(6,'G');
-        graph.setLabel(7,'H');
-        graph.setLabel(8,'I');
-
-        graph.addEdge(0, 1);
-        graph.addEdge(0, 3);
-        graph.addEdge(0, 4);
-        graph.addEdge(1, 4);
-        graph.addEdge(2, 1);
-        graph.addEdge(3, 6);
-        graph.addEdge(4, 5);
-        graph.addEdge(4, 7);
-        graph.addEdge(5, 7);
-        graph.addEdge(5, 2);
-        graph.addEdge(6, 7);
-        graph.addEdge(7, 8);
-        graph.addEdge(8, 5);
+        BasicGraphInterface<Character> arrayGraph = new Graph(9);
+        arrayGraph.addVertex('A');
+        arrayGraph.addVertex('B');
+        arrayGraph.addVertex('C');
+        arrayGraph.addVertex('D');
+        arrayGraph.addVertex('E');
+        arrayGraph.addVertex('F');
+        arrayGraph.addVertex('G');
+        arrayGraph.addVertex('H');
+        arrayGraph.addVertex('I');
+        arrayGraph.addEdge('A','B');
+        arrayGraph.addEdge('A','D');
+        arrayGraph.addEdge('A','E');
+        arrayGraph.addEdge('B','E');
+        arrayGraph.addEdge('C','B');
+        arrayGraph.addEdge('D','G');
+        arrayGraph.addEdge('E','F');
+        arrayGraph.addEdge('E','H');
+        arrayGraph.addEdge('F','C');
+        arrayGraph.addEdge('F','H');
+        arrayGraph.addEdge('G','H');
+        arrayGraph.addEdge('H','I');
+        arrayGraph.addEdge('I','F');
 
 
         BasicGraphInterface<Character> adjacencyListGraph = new AdjacencyListGraph<>(9);
@@ -53,12 +52,12 @@ public class Driver {
         adjacencyListGraph.addEdge('H','I');
         adjacencyListGraph.addEdge('I','F');
 
-        QueueInterface<Character> breadthFirstTraversal = ((AdjacencyListGraph<Character>) adjacencyListGraph).breadthFirstTraversal('A');
+        QueueInterface<Character> breadthFirstTraversal = ((Graph<Character>) arrayGraph).breadthFirstTraversal('A');
         while (!breadthFirstTraversal.isEmpty()){
             System.out.print(breadthFirstTraversal.dequeue());
         }
         System.out.println();
-        QueueInterface<Character> depthFirstTraversal = ((AdjacencyListGraph<Character>) adjacencyListGraph).depthFirstTraversal('A');
+        QueueInterface<Character> depthFirstTraversal = ((Graph<Character>) arrayGraph).depthFirstTraversal('A');
         while (!depthFirstTraversal.isEmpty()){
             System.out.print(depthFirstTraversal.dequeue());
         }
