@@ -52,14 +52,23 @@ public class Driver {
         adjacencyListGraph.addEdge('H','I');
         adjacencyListGraph.addEdge('I','F');
 
-        QueueInterface<Character> breadthFirstTraversal = ((Graph<Character>) arrayGraph).breadthFirstTraversal('A');
-        while (!breadthFirstTraversal.isEmpty()){
-            System.out.print(breadthFirstTraversal.dequeue());
-        }
-        System.out.println();
-        QueueInterface<Character> depthFirstTraversal = ((Graph<Character>) arrayGraph).depthFirstTraversal('A');
-        while (!depthFirstTraversal.isEmpty()){
-            System.out.print(depthFirstTraversal.dequeue());
+        System.out.print("BFS Traversal using arrayGraph = ");
+        printQueue(((Graph<Character>) arrayGraph).breadthFirstTraversal('A'));
+
+        System.out.print("DFS Traversal using arrayGraph = ");
+        printQueue(((Graph<Character>) arrayGraph).depthFirstTraversal('A'));
+
+        System.out.print("BFS Traversal using adjacencyListGraph = ");
+        printQueue(((AdjacencyListGraph<Character>) adjacencyListGraph).breadthFirstTraversal('A'));
+
+        System.out.print("DFS Traversal using adjacencyListGraph = ");
+        printQueue(((AdjacencyListGraph<Character>) adjacencyListGraph).depthFirstTraversal('A'));
+
+    }
+
+    public static void printQueue(QueueInterface<Character> queue){
+        while (!queue.isEmpty()){
+            System.out.print(queue.dequeue());
         }
         System.out.println();
     }
