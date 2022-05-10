@@ -1,5 +1,8 @@
 public class Driver {
     public static void main(String[] args){
+
+        // Let A = 0, B = 1, C = 2, D = 3, E = 4, F = 5, G = 6, H = 7, I = 8
+
         BasicGraphInterface<Character> arrayGraph = new Graph(9);
         arrayGraph.addVertex('A');
         arrayGraph.addVertex('B');
@@ -25,7 +28,7 @@ public class Driver {
         arrayGraph.addEdge('I','F');
 
 
-        BasicGraphInterface<Character> adjacencyListGraph = new AdjacencyListGraph();
+        BasicGraphInterface<Character> adjacencyListGraph = new AdjacencyListGraph<>(9);
         adjacencyListGraph.addVertex('A');
         adjacencyListGraph.addVertex('B');
         adjacencyListGraph.addVertex('C');

@@ -4,7 +4,7 @@ public class Graph<E> implements BasicGraphInterface<E>{
     private boolean[][] edges;
     private E[] labels;
 
-    public Graph(int n) {
+    public Graph() {
         edges = new boolean[n][n];
         labels = (E[]) new Object[n];
     }
