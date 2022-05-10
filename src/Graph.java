@@ -44,7 +44,10 @@ public class Graph<E> implements BasicGraphInterface<E>{
     public boolean hasEdge(E begin, E end){
         int beginIndex = this.getVertex(begin);
         int endIndex = this.getVertex(end);
-        return edges[beginIndex][endIndex];
+        if (beginIndex != -1 && endIndex != -1){
+            return edges[beginIndex][endIndex];
+        }
+        return false;
     }
 
     public boolean isEdge(int source, int target) {
