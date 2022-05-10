@@ -18,7 +18,7 @@ public interface BasicGraphInterface<T> {
      * @param end
      * @return
      */
-    public boolean hadEdge(T begin, T end);
+    public boolean hasEdge(T begin, T end);
 
     /**
      * @return

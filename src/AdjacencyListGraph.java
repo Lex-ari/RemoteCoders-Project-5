@@ -26,7 +26,7 @@ public class AdjacencyListGraph<E> implements BasicGraphInterface<E>{
     }
 
     @Override
-    public boolean hadEdge(E begin, E end) {
+    public boolean hasEdge(E begin, E end) {
         int index = labels.indexOf(begin);
         if (index != -1){
             return adjacencyList.get(index).indexOf(end) != -1;

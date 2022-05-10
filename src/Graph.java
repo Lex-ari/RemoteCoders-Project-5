@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class Graph<E> {
+public class Graph<E> implements BasicGraphInterface{
     private boolean[][] edges;
     private E[] labels;
 
@@ -26,12 +26,37 @@ public class Graph<E> {
         return vertex;
     }
 
+    @Override
+    public boolean addVertex(E label){
+        final E[] copiedLabels = (E[]) new Object[labels.length + 1];
+        final boolean[][] copiedEdges = new boolean[edges.length+1][edges.length+1];
+        System.arraycopy(labels, 0, copiedLabels, 0, labels.length);
+        copiedLabels[labels.length + 1] = label;
+        labels = copiedLabels;
+
+        for(int i = 0; i < edges.length; i++){
+            for(int j = 0; j < edges.length; j++){
+                copiedEdges[i][j] = edges[i][j];
+            }
+        }
+        return true;
+    }
+    @Override
+    public boolean hasEdge(E begin, E end){
+        int beginIndex = this.getVertex(begin);
+        int endIndex = this.getVertex(end);
+        return edges[beginIndex][endIndex];
+    }
+
     public boolean isEdge(int source, int target) {
         return edges[source][target];
     }
 
-    public void addEdge(int source, int target) {
-        edges[source][target] = true;
+    @Override
+    public void addEdge(E source, E target) {
+        int sourceIndex = this.getVertex(source);
+        int targetIndex = this.getVertex(target);
+        edges[sourceIndex][targetIndex] = true;
     }
 
     public int[] neighbors(int vertex) {
@@ -57,9 +82,28 @@ public class Graph<E> {
     public void setLabel(int vertex, E newLabel){
         labels[vertex] = newLabel;
     }
-    public int size(){
+    public int getNumberOfVertices(){
         return labels.length;
     }
+    public void clear(){
+        for(int i = 0; i < labels.length; i++){
+            labels[i] = null;
+        }
+        for(int i = 0; i < edges.length; i++){
+            for(int j = 0; j < edges.length; j++){
+                edges[i][j] = false;
+            }
+        }
+    }
+    public boolean isEmpty(){
+        for(int i = 0; i < labels.length; i++){
+            if(labels[i] != null){
+                return false;
+            }
+        }
+        return true;
+    }
+
 
 
     public QueueInterface<Integer> breadthFirstTraversal(E origin){
