@@ -9,7 +9,7 @@ Contributions
 
 Koki Yamaguchi: Implementation of Graph and graph interface and Junit test.
 
-Iker Goni: 
+Iker Goni: BFS, Linkled Queue and Linked Stack Implementation, Matrix bugfixing and converting to generic types.
 
 Alex Mariano: DFS, AdjacencyList Implementation, Debugging
 
@@ -17,6 +17,6 @@ Extra Implementations: Jave Interface and Generic Data Types, Adjacency Matrix a
 
 Screencast Video: https://www.youtube.com/watch?v=l33wi0WVHYI
 
-Javadoc: //TO BE LINKED//
+Javadoc: https://lex-ari.github.io/RemoteCoders-Project-5/
 
 Professor Qichao Dong for CS2400
