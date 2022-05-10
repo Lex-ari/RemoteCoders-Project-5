@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 
 public class AdjacencyListGraph<E> implements BasicGraphInterface<E>{
-    private LinkedList<E> adjacencyList;
+    private LinkedList<LinkedList<E>> adjacencyList;
     private LinkedList<E>labels;
 
     public AdjacencyListGraph(int n){
@@ -11,36 +11,41 @@ public class AdjacencyListGraph<E> implements BasicGraphInterface<E>{
 
     @Override
     public boolean addVertex(E vertexLabel) {
-        return false;
+        adjacencyList.add(new LinkedList<E>());
+        labels.add(vertexLabel);
+        return true;
     }
 
-    @Override
-    public boolean addEdge(E begin, E end, double edgeWeight) {
-        return false;
-    }
 
     @Override
     public boolean addEdge(E begin, E end) {
-        return false;
+        int index = labels.indexOf(begin);
+        adjacencyList.get(index).add(end);
+        return true;
     }
 
     @Override
     public boolean hadEdge(E begin, E end) {
+        int index = labels.indexOf(begin);
+        if (index != -1){
+            return adjacencyList.get(index).indexOf(end) != -1;
+        }
         return false;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return adjacencyList.isEmpty();
     }
 
     @Override
     public int getNumberOfVertices() {
-        return 0;
+        return adjacencyList.size();
     }
 
     @Override
     public void clear() {
-
+        adjacencyList.clear();
+        labels.clear();
     }
 }
