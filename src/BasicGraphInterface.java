@@ -9,14 +9,6 @@ public interface BasicGraphInterface<T> {
     /**
      * @param begin
      * @param end
-     * @param edgeWeight
-     * @return
-     */
-    public boolean addEdge(T begin, T end, double edgeWeight);
-
-    /**
-     * @param begin
-     * @param end
      * @return
      */
     public boolean addEdge(T begin, T end);
