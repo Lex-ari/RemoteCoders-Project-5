@@ -104,6 +104,11 @@ public class Graph<E> implements BasicGraphInterface<E>{
         return true;
     }
 
+    /**
+     * breadthFirstTraversal. Traverses through a graph as a BFS.
+     * @param origin, origin node
+     * @return a Queue of the nodes visited.
+     */
     public QueueInterface<E> breadthFirstTraversal(E origin){
         QueueInterface<Integer> traversal = new LinkedQueue<Integer>();
         QueueInterface<E> order = new LinkedQueue<E>();
@@ -135,6 +140,12 @@ public class Graph<E> implements BasicGraphInterface<E>{
         }
         return order;
     }
+
+    /**
+     * depthFirstTraversal. Traverses through a graph as a DFS.
+     * @param origin, origin node
+     * @return a Queue of the nodes visited.
+     */
     public QueueInterface<E> depthFirstTraversal(E origin){
         QueueInterface<E> traversalOrder = new LinkedQueue<E>();
         StackInterface<Integer> vertexStack = new LinkedStack<>();
