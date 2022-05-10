@@ -8,7 +8,7 @@ Koki Yamaguchi:
 
 Iker Goni: 
 
-Alex Mariano: 
+Alex Mariano: DFS, AdjacencyList Implementation, Debugging
 
 Extra Implementations: 
 
