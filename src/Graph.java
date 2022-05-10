@@ -58,8 +58,11 @@ public class Graph<E> implements BasicGraphInterface<E>{
     public boolean addEdge(E source, E target) {
         int sourceIndex = this.getVertex(source);
         int targetIndex = this.getVertex(target);
-        edges[sourceIndex][targetIndex] = true;
-        return true;
+        if (sourceIndex != -1 && targetIndex != -1) {
+            edges[sourceIndex][targetIndex] = true;
+            return true;
+        }
+        return false;
     }
 
     public int[] neighbors(int vertex) {
